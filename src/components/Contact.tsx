@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane, faUser, faBuilding, faBriefcase, faEnvelope, faPhone, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import { motion } from 'framer-motion';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -42,21 +41,10 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="bg-gradient-to-b from-black to-gray-900 text-white py-20">
       <div className="container mx-auto px-4">
-        <motion.h2 
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl font-bold mb-12 text-center text-[#8CC63F]"
-        >
+        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-[#8CC63F]">
           Contact Us
-        </motion.h2>
-        <motion.form 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          onSubmit={handleSubmit} 
-          className="max-w-3xl mx-auto bg-black bg-opacity-50 p-8 rounded-xl shadow-2xl backdrop-blur-sm"
-        >
+        </h2>
+        <form onSubmit={handleSubmit} className="max-w-3xl mx-auto bg-black bg-opacity-50 p-8 rounded-xl shadow-2xl backdrop-blur-sm">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               { icon: faUser, name: 'firstName', placeholder: 'First Name' },
@@ -98,15 +86,13 @@ const Contact: React.FC = () => {
               <option value="other">Other</option>
             </select>
           </div>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <button
             type="submit"
             className="w-full mt-8 bg-[#8CC63F] text-white font-bold py-3 px-4 rounded-lg hover:bg-[#7AB52F] transition duration-300 shadow-lg hover:shadow-xl"
           >
             Send Message <FontAwesomeIcon icon={faPaperPlane} className="ml-2" />
-          </motion.button>
-        </motion.form>
+          </button>
+        </form>
       </div>
     </section>
   );

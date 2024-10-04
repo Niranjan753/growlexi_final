@@ -1,6 +1,5 @@
 'use client'
 import React from 'react';
-import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRobot, faCode, faGlobe, faEnvelope, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
@@ -13,9 +12,7 @@ interface PackageCardProps {
 }
 
 const PackageCard: React.FC<PackageCardProps> = ({ title, features, isPrimary }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: 0 }}
+  <div 
     className={`bg-black rounded-xl shadow-2xl p-8 border-2 ${isPrimary ? 'border-white' : 'border-[#8CC63F]'} flex flex-col`}
   >
     <h3 className="text-xl font-bold text-[#8CC63F] text-center mb-4">{title}</h3>
@@ -24,7 +21,7 @@ const PackageCard: React.FC<PackageCardProps> = ({ title, features, isPrimary })
         <li key={index} className="text-white">{feature}</li>
       ))}
     </ul>
-  </motion.div>
+  </div>
 );
 
 interface AddOnCardProps {
@@ -33,14 +30,12 @@ interface AddOnCardProps {
 }
 
 const AddOnCard: React.FC<AddOnCardProps> = ({ title, icon }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: 0 }}
+  <div 
     className="bg-black rounded-xl shadow-2xl p-6 flex flex-col items-center"
   >
     <FontAwesomeIcon icon={icon} className="text-[#8CC63F] text-4xl mb-4" />
     <h3 className="text-xl font-bold text-[#8CC63F] text-center">{title}</h3>
-  </motion.div>
+  </div>
 );
 
 const packages: PackageCardProps[] = [
@@ -59,6 +54,7 @@ const packages: PackageCardProps[] = [
   }
 ];
 
+
 const addOns: AddOnCardProps[] = [
   { title: "Automation Support", icon: faRobot },
   { title: "Custom APIs", icon: faCode },
@@ -66,18 +62,19 @@ const addOns: AddOnCardProps[] = [
   { title: "Extra Emails", icon: faEnvelope },
 ];
 
+
 export default function PackagesPage() {
   return (
     <>
       <div className="min-h-screen bg-black text-white py-20 px-4">
         <Link href="/" className="text-[#8CC63F] hover:underline mb-4 inline-block">&lt;- Back to homepage</Link>
-        <motion.h1 initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} className="text-5xl font-bold text-center mb-16">Our Packages</motion.h1>
+        <h1 className="text-5xl font-bold text-center mb-16">Our Packages</h1>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {packages.map((pkg, index) => (
             <PackageCard key={index} {...pkg} />
           ))}
         </div>
-        <motion.h2 initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} className="text-4xl font-bold text-center mb-8">Add On Packages</motion.h2>
+        <h2 className="text-4xl font-bold text-center mb-8">Add On Packages</h2>
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {addOns.map((addOn, index) => (
             <AddOnCard key={index} {...addOn} />
