@@ -51,7 +51,7 @@ export default function LandingPage() {
             <div className="hidden md:flex items-center space-x-8">
               <Link href="/" className="text-white hover:text-[#8CC63F] transition duration-300">Home</Link>
               <Link href="/packages" className="text-white hover:text-[#8CC63F] transition duration-300">Packages</Link>
-              <Link href="/Team" className="text-white hover:text-[#8CC63F] transition duration-300">Team</Link>
+              <Link href="/team" className="text-white hover:text-[#8CC63F] transition duration-300">Team</Link>
               <Link href="#contact" className="bg-black border border-[#8CC63F] text-white px-6 py-2 text-base rounded-full hover:bg-[#8CC63F] hover:text-black transition duration-300">
                 Let's Talk
               </Link>
