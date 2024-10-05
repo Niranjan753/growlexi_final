@@ -1,0 +1,24 @@
+.sliderContainer {
+  overflow: hidden;
+  background-color: black;
+  padding: 2.5rem 0;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 auto;
+  margin: 0 2rem;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
