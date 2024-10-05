@@ -1,6 +1,5 @@
 'use client'
 import React from 'react';
-import { motion, useInView } from 'framer-motion';
 
 interface RoadmapItemProps {
   title: string;
@@ -10,17 +9,8 @@ interface RoadmapItemProps {
 }
 
 const RoadmapItem: React.FC<RoadmapItemProps> = ({ title, description, isLeft, isLast }) => {
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
-
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5 }}
-      className={`flex items-center mb-16 relative`}
-    >
+    <div className={`flex items-center mb-16 relative`}>
       <div className={`w-1/2 ${isLeft ? 'pr-8 text-right' : 'pl-8 text-left'} ${isLeft ? '' : 'ml-auto'}`}>
         <h3 className="text-2xl font-bold mb-2 text-[#8CC63F]">{title}</h3>
         <p className="text-gray-300">{description}</p>
@@ -31,7 +21,7 @@ const RoadmapItem: React.FC<RoadmapItemProps> = ({ title, description, isLeft, i
           <div className="absolute top-1/2 left-1/2 w-10 h-10 bg-[#8CC63F] rounded-full -translate-x-1/2 -translate-y-1/2 shadow-lg"></div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -1,14 +1,8 @@
 'use client'
 import React from 'react';
-import { motion } from 'framer-motion';
 
 const PackageCard: React.FC<{ title: string; features: string[] }> = ({ title, features }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-    className="bg-gray-800 p-6 rounded-lg shadow-lg"
-  >
+  <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
     <h2 className="text-2xl font-bold text-[#8CC63F] mb-4">{title}</h2>
     <ul className="space-y-2">
       {features.map((feature, index) => (
@@ -18,7 +12,7 @@ const PackageCard: React.FC<{ title: string; features: string[] }> = ({ title, f
         </li>
       ))}
     </ul>
-  </motion.div>
+  </div>
 );
 
 const PackagesPage: React.FC = () => {
