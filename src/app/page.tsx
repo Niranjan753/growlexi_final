@@ -1,3 +1,4 @@
+'use client' 
 import Image from "next/image";
 import Link from "next/link";
 // import Clients from '../components/Clients'
@@ -7,101 +8,119 @@ import Recommendations from "../components/Recommendations";
 import Slider from "../components/Slider";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
-import Packages from "../components/Packages";
+import { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation';
 
 export default function LandingPage() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleLogoClick = () => {
+    window.location.reload();
+  };
+
   return (
-    <>
-      <div className="relative min-h-screen">
-        <div className="absolute inset-0 overflow-hidden rounded-3xl m-2 sm:m-4">
-          <Image
-            src="/back.png"
-            alt="Background image with robotic arm"
-            layout="fill"
-            objectFit="cover"
-            quality={100}
-            priority
-            className="filter grayscale rounded-3xl"
-            style={{ transform: "scale(0.8)" }}
-          />
-        </div>
-        <div className="relative z-10 min-h-screen flex flex-col">
-          <header className="p-2 sm:p-4 md:p-6 flex justify-center fixed top-0 left-0 right-0 z-50">
-            <nav className="px-2 sm:px-4 md:px-8 py-1 sm:py-2 md:py-3">
-              <ul className="flex space-x-2 sm:space-x-4 md:space-x-8 relative">
-                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm rounded-full transition-all duration-300 ease-in-out hover:bg-white/20"></div>
-                {["Home", "About Us", "Packages", "Contact"].map(
-                  (item, index) => (
-                    <li key={item} className="relative z-10">
-                      <Link
-                        href={
-                          item === "Home"
-                            ? "/"
-                            : item === "About Us"
-                            ? "#about-us"
-                            : item === "Contact"
-                            ? "#contact"
-                            : item === "Packages"
-                            ? "/packages"
-                            : `/${item.toLowerCase().replace(" ", "-")}`
-                        }
-                        className="text-white hover:text-[#8CC63F] relative overflow-hidden group px-1 sm:px-2 md:px-4 py-1 sm:py-2 inline-block text-xs sm:text-sm md:text-base"
-                      >
-                        <span className="relative z-10 transition-all duration-300">
-                          {item}
-                        </span>
-                        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#8CC63F] transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100"></span>
-                      </Link>
-                    </li>
-                  )
-                )}
-              </ul>
-            </nav>
-          </header>
-          <main className="flex-grow flex flex-col justify-center items-center text-center px-4 mt-16 sm:mt-20">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 max-w-4xl">
-              <span className="relative">The Precision-Driven</span>{" "}
-              <span className="text-[#8CC63F] relative">
-                <span className="absolute -inset-1 bg-[#8CC63F] opacity-25 blur"></span>
-                <span className="relative">Outbound</span>
-              </span>{" "}
-              <span className="relative">Sales Engine</span>
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-white mb-6 sm:mb-8 max-w-2xl">
-              We connect B2B organizations with the right audience while laying
-              the foundation to boost early-stage funnel conversions
-              effectively.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/case-study"
-                className="bg-white text-gray-800 hover:bg-gray-100 px-4 py-2 rounded text-sm sm:text-base w-full sm:w-auto"
-              >
-                Case Study
-              </Link>
-              <Link
-                href="#contact"
-                className="bg-[#8CC63F] hover:bg-[#7AB62F] text-white px-4 py-2 rounded flex items-center justify-center text-sm sm:text-base w-full sm:w-auto"
-              >
-                Roadmap With Us
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 ml-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
+    <div className="min-h-screen bg-black text-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black shadow-lg' : 'bg-transparent'}`}>
+          <nav className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center w-full bg-opacity-20 rounded-full py-3">
+            <div className="w-32 h-12 relative cursor-pointer" onClick={handleLogoClick}>
+              <Image
+                src="/logo.webp"
+                alt="GrowLexi Logo"
+                layout="fill"
+                objectFit="contain"
+              />
+            </div>
+            <div className="hidden md:flex items-center space-x-8">
+              <Link href="/" className="text-white hover:text-[#8CC63F] transition duration-300">Home</Link>
+              <Link href="/packages" className="text-white hover:text-[#8CC63F] transition duration-300">Packages</Link>
+              <Link href="/Team" className="text-white hover:text-[#8CC63F] transition duration-300">Team</Link>
+              <Link href="#contact" className="bg-black border border-[#8CC63F] text-white px-6 py-2 text-base rounded-full hover:bg-[#8CC63F] hover:text-black transition duration-300">
+                Let's Talk
               </Link>
             </div>
-          </main>
-        </div>
+            <button 
+              className="md:hidden text-white focus:outline-none"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+            </button>
+          </nav>
+          {isMenuOpen && (
+            <div className="md:hidden mt-4 bg-black">
+              <Link href="/" className="block text-white hover:text-[#8CC63F] py-2">Home</Link>
+              <Link href="/packages" className="block text-white hover:text-[#8CC63F] py-2">Packages</Link>
+              <Link href="/team" className="block text-white hover:text-[#8CC63F] py-2">Team</Link>
+              <Link href="#contact" className="block bg-black border border-[#8CC63F] text-white px-6 py-2 text-base rounded-full hover:bg-[#8CC63F] hover:text-black mt-2 mx-auto w-max">
+                Let's Talk
+              </Link>
+            </div>
+          )}
+        </header>
+        <main className="py-12 sm:py-20 text-center relative overflow-hidden mt-16">
+          <div className="absolute inset-0 bg-black z-0"></div>
+          <div className="relative z-10">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold mb-6">
+              <span className="bg-gradient-to-r from-white via-gray-300 to-gray-100 text-transparent bg-clip-text">
+                The Precision-Driven
+              </span>
+              <br />
+              <span className="relative inline-block">
+                <span className="relative z-10 bg-gradient-to-r from-[#8CC63F] via-[#A0E350] to-[#5A822A] text-transparent bg-clip-text font-extrabold tracking-tight">
+                  Outbound Sales Engine
+                </span>
+              </span>
+            </h1>
+            <p className="text-lg sm:text-xl mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed text-gray-300">
+              We connect B2B organizations with the right audience while laying the foundation to boost early-stage funnel conversions effectively.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+              <Link href="/case-study" className="relative inline-flex group">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8CC63F] to-[#5A822A] rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                <button className="relative px-6 sm:px-8 py-3 bg-black rounded-full leading-none flex items-center divide-x divide-gray-600 w-full sm:w-auto justify-center text-base">
+                  <span className="pr-4 text-gray-100">Case Study</span>
+                  <span className="pl-4 text-[#8CC63F] group-hover:text-gray-100 transition duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </button>
+              </Link>
+              <Link href="#contact" className="relative inline-flex group">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8CC63F] to-[#5A822A] rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                <button className="relative px-6 sm:px-8 py-3 bg-[#8CC63F] rounded-full leading-none flex items-center divide-x divide-gray-600 w-full sm:w-auto justify-center text-base">
+                  <span className="pr-4 text-black">Roadmap With Us</span>
+                  <span className="pl-4 text-black group-hover:text-white transition duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </button>
+              </Link>
+            </div>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black to-transparent"></div>
+        </main>
       </div>
       {/* <Clients /> */}
       <We />
@@ -110,6 +129,6 @@ export default function LandingPage() {
       <Slider />
       <Contact />
       <Footer />
-    </>
+    </div>
   );
 }

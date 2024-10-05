@@ -12,39 +12,42 @@ const Slider: React.FC = () => {
     if (!slider) return;
 
     const animate = () => {
-      if (slider && slider.parentNode) {
+      if (slider) {
         const firstChild = slider.firstElementChild as HTMLElement;
         if (firstChild) {
           const width = firstChild.offsetWidth;
-          slider.style.transition = 'transform 0.5s ease-in-out';
-          slider.style.transform = `translateX(-${width}px)`;
+          slider.style.transition = 'transform 30s linear';
+          slider.style.transform = `translateX(-${width * logos.length}px)`;
 
           setTimeout(() => {
-            if (slider && slider.parentNode) {
+            if (slider) {
               slider.style.transition = 'none';
               slider.style.transform = 'translateX(0)';
-              slider.appendChild(slider.firstElementChild!);
+              for (let i = 0; i < logos.length; i++) {
+                slider.appendChild(slider.firstElementChild!);
+              }
             }
-          }, 500);
+          }, 30000);
         }
       }
     };
 
-    const interval = setInterval(animate, 3000);
+    animate();
+    const interval = setInterval(animate, 30000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className={styles.sliderContainer}>
+    <div className={`${styles.sliderContainer} bg-gradient-to-b from-black via-gray-900 to-black`}>
       <div ref={sliderRef} className={styles.slider}>
         {[...logos, ...logos].map((logo, index) => (
           <div key={index} className={styles.slide}>
             <Image
               src={`/${logo}.webp`}
               alt={`Company logo ${(index % 10) + 1}`}
-              width={logo === 'com_9' ? 100 : 150}
-              height={logo === 'com_9' ? 33 : 50}
+              width={logo === 'com_9' ? 80 : 120}
+              height={logo === 'com_9' ? 26 : 40}
             />
           </div>
         ))}

@@ -5,7 +5,7 @@ import { faBolt, faWrench, faBullseye, faChartLine } from '@fortawesome/free-sol
 
 const We: React.FC = () => {
   return (
-    <section id="about-us" className="bg-black text-white py-16">
+    <section id="about-us" className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-left">
           <h1 className="text-5xl md:text-7xl font-bold mb-4 text-[#8CC63F]">

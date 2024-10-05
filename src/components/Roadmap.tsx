@@ -1,25 +1,47 @@
 'use client'
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface RoadmapItemProps {
   title: string;
   description: string;
-  isLeft: boolean;
-  isLast: boolean;
+  index: number;
 }
 
-const RoadmapItem: React.FC<RoadmapItemProps> = ({ title, description, isLeft, isLast }) => {
+const RoadmapItem: React.FC<RoadmapItemProps> = ({ title, description, index }) => {
+  const itemRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-10');
+        }
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    if (itemRef.current) {
+      observer.observe(itemRef.current);
+    }
+
+    return () => {
+      if (itemRef.current) {
+        observer.unobserve(itemRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className={`flex items-center mb-16 relative`}>
-      <div className={`w-1/2 ${isLeft ? 'pr-8 text-right' : 'pl-8 text-left'} ${isLeft ? '' : 'ml-auto'}`}>
-        <h3 className="text-2xl font-bold mb-2 text-[#8CC63F]">{title}</h3>
-        <p className="text-gray-300">{description}</p>
-      </div>
-      <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-[#8CC63F] rounded-full z-10">
-        <div className="absolute top-1/2 left-1/2 w-6 h-6 bg-[#8CC63F] rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-        {isLast && (
-          <div className="absolute top-1/2 left-1/2 w-10 h-10 bg-[#8CC63F] rounded-full -translate-x-1/2 -translate-y-1/2 shadow-lg"></div>
-        )}
+    <div
+      ref={itemRef}
+      className={`mb-8 md:mb-16 opacity-0 translate-y-10 transition-all duration-1000 ease-out`}
+    >
+      <div className={`bg-gray-800 rounded-lg p-6 md:p-8 shadow-lg ${index % 2 === 0 ? 'md:ml-[50%]' : 'md:mr-[50%]'}`}>
+        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-[#8CC63F]">{title}</h3>
+        <p className="text-gray-300 text-sm md:text-base">{description}</p>
       </div>
     </div>
   );
@@ -33,7 +55,7 @@ const Roadmap: React.FC = () => {
     },
     {
       title: "ROADMAP",
-      description: "In the Roadmap phase, we translate our discoveries into a strategic plan. This comprehensive guide outlines actionable steps and timelines, setting the course for your sales journey..",
+      description: "In the Roadmap phase, we translate our discoveries into a strategic plan. This comprehensive guide outlines actionable steps and timelines, setting the course for your sales journey.",
     },
     {
       title: "CONSTRUCTION & IMPLEMENTATION",
@@ -54,18 +76,17 @@ const Roadmap: React.FC = () => {
   ];
 
   return (
-    <section className="bg-black text-white py-16">
-      <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16">Our Growth Roadmap</h2>
+    <section className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-16">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Our Growth Roadmap</h2>
         <div className="relative">
-          <div className="absolute left-1/2 top-0 h-[calc(100%-2rem)] w-1 bg-[#8CC63F] -translate-x-1/2"></div>
+          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-[#8CC63F] hidden md:block"></div>
           {roadmapItems.map((item, index) => (
             <RoadmapItem
               key={index}
               title={item.title}
               description={item.description}
-              isLeft={index % 2 === 0}
-              isLast={index === roadmapItems.length - 1}
+              index={index}
             />
           ))}
         </div>

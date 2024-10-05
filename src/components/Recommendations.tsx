@@ -3,12 +3,12 @@ import Image from 'next/image';
 
 const Recommendations: React.FC = () => {
   return (
-    <section className="bg-black text-white py-16">
+    <section className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-16">
       <div className="max-w-3xl mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-8">Recommendations</h2>
         <div className="bg-black border border-gray-800 rounded-lg p-8 relative overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#8CC63F] to-[#5A822A] opacity-30 rounded-lg"></div>
+            <div className="absolute inset-0 bg-gray-800 opacity-30 rounded-lg"></div>
           </div>
           <div className="relative z-10 bg-black rounded-lg p-0.5">
             <div className="bg-black rounded-lg p-7">
