@@ -1,7 +1,6 @@
 'use client' 
 import Image from "next/image";
 import Link from "next/link";
-// import Clients from '../components/Clients'
 import We from "../components/We";
 import Roadmap from "../components/Roadmap";
 import Recommendations from "../components/Recommendations";
