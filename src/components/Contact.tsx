@@ -25,30 +25,42 @@ const Contact: React.FC = () => {
           target: "#hubspot-form-container",
           css: `
             .hs-form-field label {
-              font-family: Arial, Helvetica, sans-serif;
-              color: #ededed;
+              font-family: Arial, sans-serif;
+              color: #ffffff;
               margin-bottom: 8px;
+              display: block;
             }
             .hs-form-field input, .hs-form-field textarea {
-              background-color: #1a1a1a;
-              border: 1px solid #333;
-              color: #ededed;
+              width: 100%;
               padding: 10px;
+              margin-bottom: 15px;
+              border: 1px solid #444;
+              background-color: #222;
+              color: #ffffff;
               border-radius: 4px;
-              font-family: Arial, Helvetica, sans-serif;
+              transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            }
+            .hs-form-field input:hover, .hs-form-field textarea:hover {
+              border-color: #8CC63F;
+            }
+            .hs-form-field input:focus, .hs-form-field textarea:focus {
+              border-color: #8CC63F;
+              box-shadow: 0 0 0 2px rgba(140, 198, 63, 0.2);
+              outline: none;
             }
             .hs-button {
               background-color: #8CC63F;
-              color: #0a0a0a;
-              padding: 12px 24px;
+              color: #ffffff;
+              padding: 12px 20px;
               border: none;
               border-radius: 4px;
-              font-weight: bold;
               cursor: pointer;
-              transition: background-color 0.3s ease;
+              font-weight: bold;
+              transition: background-color 0.3s ease, transform 0.2s ease;
             }
             .hs-button:hover {
-              background-color: #5A822A;
+              background-color: #7AB52E;
+              transform: translateY(-2px);
             }
           `
         });
@@ -68,7 +80,7 @@ const Contact: React.FC = () => {
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
           <span className="bg-gradient-to-r from-[#8CC63F] to-[#5A822A] text-transparent bg-clip-text">Get in Touch</span>
         </h2>
-        <div id="hubspot-form-container" className="bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"></div>
+        <div id="hubspot-form-container" className="bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-750"></div>
       </div>
     </section>
   );
