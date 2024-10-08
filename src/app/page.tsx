@@ -9,6 +9,7 @@ import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
+import Clients from "../components/Clients";
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -123,6 +124,7 @@ export default function LandingPage() {
       </div>
       <div id="about-us"><We /></div>
       <div id="roadmap"><Roadmap /></div>
+      <div id="clients"><Clients /></div>
       <Recommendations />
       <Slider />
       <div id="contact"><Contact /></div>
