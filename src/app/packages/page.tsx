@@ -75,10 +75,12 @@ export default function Packages() {
           <h1 className="text-4xl font-bold text-center mb-2">Our Packages</h1>
           <p className="text-center text-gray-400 mb-8">Choose the perfect plan to supercharge your lead generation and sales process.</p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {packages.map((pkg, index) => (
-              <PackageCard key={index} {...pkg} />
-            ))}
+          <div className="flex justify-center mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+              {packages.map((pkg, index) => (
+                <PackageCard key={index} {...pkg} />
+              ))}
+            </div>
           </div>
 
           <h2 className="text-2xl font-bold text-center mb-4">Add On Packages</h2>
