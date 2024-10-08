@@ -2,8 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from 'next/navigation';
 
 const Header: React.FC = () => {
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -27,6 +29,10 @@ const Header: React.FC = () => {
     window.location.reload();
   };
 
+  const handleLetsTalkClick = () => {
+    router.push('/#contact');
+  };
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 bg-black transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}>
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center w-full bg-opacity-20 rounded-full">
@@ -42,9 +48,12 @@ const Header: React.FC = () => {
           <Link href="/" className="text-white hover:text-[#8CC63F] transition duration-300">Home</Link>
           <Link href="/packages" className="text-white hover:text-[#8CC63F] transition duration-300">Packages</Link>
           <Link href="/Team" className="text-white hover:text-[#8CC63F] transition duration-300">Team</Link>
-          <Link href="#contact" className="bg-black border border-[#8CC63F] text-white px-6 py-2 text-base rounded-full hover:bg-[#8CC63F] hover:text-black transition duration-300">
+          <button
+            onClick={handleLetsTalkClick}
+            className="bg-[#8CC63F] text-black px-4 py-2 rounded hover:bg-[#7AB52E] transition-colors"
+          >
             Let's Talk
-          </Link>
+          </button>
         </div>
         <button 
           className="md:hidden text-white focus:outline-none"
