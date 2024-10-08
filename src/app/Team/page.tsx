@@ -6,21 +6,27 @@ import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 interface TeamMemberProps {
-  imageSrc: string;
+  imageSrc?: string;
   name: string;
   role: string;
   description: string;
   linkedIn?: string;
   imageStyle?: React.CSSProperties;
+  useIcon?: boolean;
 }
 
-const TeamMember: React.FC<TeamMemberProps> = ({ imageSrc, name, role, description, linkedIn, imageStyle }) => (
+const TeamMember: React.FC<TeamMemberProps> = ({ imageSrc, name, role, description, linkedIn, imageStyle, useIcon }) => (
   <div className="bg-gradient-to-br from-gray-900 to-black rounded-lg shadow-md p-6 transform hover:shadow-xl transition-all duration-300 border border-gray-800 h-full">
     <div className="flex flex-col items-center h-full">
-      <div className="w-32 h-32 relative mb-4">
-        <Image src={imageSrc} alt={name} layout="fill" objectFit="cover" className="rounded-full shadow-sm" style={imageStyle} />
+      <div className="w-32 h-32 relative mb-4 rounded-full overflow-hidden bg-gray-800 flex items-center justify-center">
+        {useIcon ? (
+          <FontAwesomeIcon icon={faUser} className="text-[#8CC63F] text-6xl" />
+        ) : (
+          <Image src={imageSrc || ''} alt={name} layout="fill" objectFit="cover" className="rounded-full shadow-sm" style={imageStyle} />
+        )}
       </div>
       <h3 className="text-xl font-bold text-[#8CC63F] mb-1">{name}</h3>
       <h4 className="text-sm font-semibold text-gray-300 mb-3">{role}</h4>
@@ -59,12 +65,11 @@ const TeamPage: React.FC = () => {
       linkedIn: "https://www.linkedin.com/in/ashish-vaishnav/"
     },
     {
-      imageSrc: "/brian2.png",
       name: "Brian Cooper",
       role: "Sales Enablement Manager",
       description: "Drives sales performance with innovative strategies.",
       linkedIn: "https://www.linkedin.com/in/brian-cooper-3b5973294/",
-      imageStyle: { transform: 'scale(1.1)' }
+      useIcon: true
     },
     {
       imageSrc: "/keith.jpg",
