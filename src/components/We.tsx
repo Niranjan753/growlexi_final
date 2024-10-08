@@ -7,19 +7,19 @@ const We: React.FC = () => {
   return (
     <section id="about-us" className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-left">
+        <div className="text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-4 text-[#8CC63F]">
             GrowLexi
           </h1>
           <h2 className="text-4xl md:text-5xl font-light mb-6">
             transforms your outreach.
           </h2>
-          <p className="text-xl md:text-2xl mb-12 max-w-3xl">
+          <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto">
             ... so you don't have to. Whether you're a startup, an enterprise, or just a business looking to grow, we've got you covered.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mt-16">
             <div>
-              <div className="text-[#8CC63F] mb-4">
+              <div className="text-[#8CC63F] mb-4 flex justify-center">
                 <FontAwesomeIcon icon={faBolt} style={{ width: '48px', height: '48px' }} />
               </div>
               <h3 className="text-2xl font-semibold mb-3">Cold Outbound</h3>
@@ -31,7 +31,7 @@ const We: React.FC = () => {
               </p>
             </div>
             <div>
-              <div className="text-[#8CC63F] mb-4">
+              <div className="text-[#8CC63F] mb-4 flex justify-center">
                 <FontAwesomeIcon icon={faWrench} style={{ width: '48px', height: '48px' }} />
               </div>
               <h3 className="text-2xl font-semibold mb-3">Process Development</h3>
@@ -43,7 +43,7 @@ const We: React.FC = () => {
               </p>
             </div>
             <div>
-              <div className="text-[#8CC63F] mb-4">
+              <div className="text-[#8CC63F] mb-4 flex justify-center">
                 <FontAwesomeIcon icon={faBullseye} style={{ width: '48px', height: '48px' }} />
               </div>
               <h3 className="text-2xl font-semibold mb-3">Lead Qualification</h3>
@@ -55,7 +55,7 @@ const We: React.FC = () => {
               </p>
             </div>
             <div>
-              <div className="text-[#8CC63F] mb-4">
+              <div className="text-[#8CC63F] mb-4 flex justify-center">
                 <FontAwesomeIcon icon={faChartLine} style={{ width: '48px', height: '48px' }} />
               </div>
               <h3 className="text-2xl font-semibold mb-3">Strategic Process</h3>

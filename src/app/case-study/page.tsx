@@ -3,9 +3,12 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 
 const CaseStudy: React.FC = () => {
   return (
+    <>
+    <Header />
     <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white">
       <div className="container mx-auto px-4 py-10 sm:py-20 max-w-3xl">
         <Link href="/" className="text-[#8CC63F] hover:text-[#A0E350] transition-colors duration-300 mb-4 sm:mb-8 inline-block text-sm sm:text-base">&lt;- Back to homepage</Link>
@@ -84,7 +87,8 @@ const CaseStudy: React.FC = () => {
         </div>
       </div>
       <Footer />
-    </div>
+      </div>
+    </>
   );
 };
 
