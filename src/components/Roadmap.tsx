@@ -1,48 +1,16 @@
 'use client'
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 interface RoadmapItemProps {
   title: string;
   description: string;
-  index: number;
 }
 
-const RoadmapItem: React.FC<RoadmapItemProps> = ({ title, description, index }) => {
-  const itemRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100', 'translate-y-0');
-          entry.target.classList.remove('opacity-0', 'translate-y-10');
-        }
-      },
-      {
-        threshold: 0.1,
-      }
-    );
-
-    if (itemRef.current) {
-      observer.observe(itemRef.current);
-    }
-
-    return () => {
-      if (itemRef.current) {
-        observer.unobserve(itemRef.current);
-      }
-    };
-  }, []);
-
+const RoadmapItem: React.FC<RoadmapItemProps> = ({ title, description }) => {
   return (
-    <div
-      ref={itemRef}
-      className={`mb-8 md:mb-16 opacity-0 translate-y-10 transition-all duration-1000 ease-out`}
-    >
-      <div className={`bg-gray-800 rounded-lg p-6 md:p-8 shadow-lg ${index % 2 === 0 ? 'md:ml-[50%]' : 'md:mr-[50%]'}`}>
-        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-[#8CC63F]">{title}</h3>
-        <p className="text-gray-300 text-sm md:text-base">{description}</p>
-      </div>
+    <div className="mb-8 bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+      <h3 className="text-2xl font-bold mb-4 text-[#8CC63F]">{title}</h3>
+      <p className="text-gray-300 text-sm">{description}</p>
     </div>
   );
 };
@@ -76,19 +44,22 @@ const Roadmap: React.FC = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-16">
+    <section className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Our Growth Roadmap</h2>
-        <div className="relative">
-          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-[#8CC63F] hidden md:block"></div>
+        <div className="flex flex-col items-center relative">
           {roadmapItems.map((item, index) => (
-            <RoadmapItem
-              key={index}
-              title={item.title}
-              description={item.description}
-              index={index}
-            />
+            <React.Fragment key={index}>
+              <RoadmapItem
+                title={item.title}
+                description={item.description}
+              />
+              {index < roadmapItems.length - 1 && (
+                <div className="w-0.5 h-8 bg-[#8CC63F] my-2"></div>
+              )}
+            </React.Fragment>
           ))}
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-[#8CC63F] -z-10 transform -translate-x-1/2"></div>
         </div>
       </div>
     </section>
