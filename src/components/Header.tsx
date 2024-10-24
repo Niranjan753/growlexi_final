@@ -34,11 +34,11 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 bg-black transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}>
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center w-full bg-opacity-20 rounded-full">
         <div className="w-32 h-12 relative cursor-pointer" onClick={handleLogoClick}>
           <Image
-            src="/unnamed11.png"
+            src="/newlogo.png"
             alt="GrowLexi Logo"
             layout="fill"
             objectFit="contain"
