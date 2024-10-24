@@ -35,7 +35,6 @@ const PackagesPageWrapper: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-[#8CC63F] to-[#5A822A] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               <div className="relative z-10">
                 <h2 className="text-3xl font-semibold mb-4">Integrated Top of Funnel Management</h2>
-                <p className="text-2xl font-bold text-[#8CC63F] mb-6">Custom Pricing</p>
                 <ul className="list-disc list-inside mb-6 text-left">
                   <li>Everything in Lead Activation Services</li>
                   <li>Weekly strategy calls</li>
@@ -54,7 +53,6 @@ const PackagesPageWrapper: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-[#8CC63F] to-[#5A822A] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               <div className="relative z-10">
                 <h2 className="text-3xl font-semibold mb-4">Add On Packages</h2>
-                <p className="text-2xl font-bold text-[#8CC63F] mb-6">Flexible Pricing</p>
                 <ul className="list-disc list-inside mb-6 text-left">
                   <li>Extra Domains Configuration</li>
                   <li>Additional Outbound Engines</li>

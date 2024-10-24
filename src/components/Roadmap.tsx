@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { motion, useAnimation } from 'framer-motion';
+import Link from 'next/link';
 
 interface RoadmapItemProps {
   title: string;
@@ -68,6 +69,20 @@ const Roadmap: React.FC = () => {
     <section className="bg-gradient-to-b from-black via-gray-900 to-black text-white py-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">Your Roadmap</h2>
+        <div className="text-center mb-8">
+          <Link href="https://meetings.hubspot.com/stephen-comstock" target="_blank" rel="noopener noreferrer" className="relative inline-flex group">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8CC63F] to-[#5A822A] rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+            <button className="relative px-6 sm:px-8 py-3 bg-[#8CC63F] rounded-full leading-none flex items-center divide-x divide-gray-600 w-full sm:w-auto justify-center text-base">
+              <span className="pr-4 text-black font-bold">Schedule Your Roadmap</span>
+              <span className="pl-4 text-black group-hover:text-white transition duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </span>
+            </button>
+          </Link>
+        </div>
+
         <div className="flex flex-col items-center relative">
           {roadmapItems.map((item, index) => {
             const { ref, inView } = useInView({

@@ -91,6 +91,19 @@ export default function LandingPage() {
       </div>
       <div id="about-us"><We /></div>
       <div id="roadmap"><Roadmap /></div>
+      <div className="flex justify-center mt-8">
+        <Link href="/packages" className="relative inline-flex group">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8CC63F] to-[#5A822A] rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+          <button className="relative px-6 sm:px-8 py-3 bg-black rounded-full leading-none flex items-center divide-x divide-gray-600 w-full sm:w-auto justify-center text-base">
+            <span className="pr-4 text-gray-100">Packages</span>
+            <span className="pl-4 text-[#8CC63F] group-hover:text-gray-100 transition duration-200">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </span>
+          </button>
+        </Link>
+      </div>
       <Recommendations />
       <Slider />
       <div id="contact"><Contact /></div>
