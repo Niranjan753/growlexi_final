@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBolt, faWrench, faBullseye, faChartLine } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faCogs, faUserCheck, faChartPie } from '@fortawesome/free-solid-svg-icons';
 
 const We: React.FC = () => {
   return (
@@ -11,16 +11,32 @@ const We: React.FC = () => {
           <h1 className="text-5xl md:text-7xl font-bold mb-4 text-[#8CC63F]">
             GrowLexi
           </h1>
-          <h2 className="text-4xl md:text-5xl font-light mb-6">
-            transforms your outreach.
+          <h2 className="text-3xl md:text-4xl font-light mb-6">
+            <span className="bg-gradient-to-r from-[#8CC63F] to-[#5A822A] text-transparent bg-clip-text">
+              We attract decision-makers
+            </span>
+            <br />
+            <span className="text-gray-200">
+              and work with you on developing in-house processes to convert interested leads to qualified opportunities.
+            </span>
           </h2>
-          <p className="text-xl md:text-2xl mb-12 max-w-3xl mx-auto">
-            ... so you don't have to. Whether you're a startup, an enterprise, or just a business looking to grow, we've got you covered.
-          </p>
+          <div className="flex justify-center mt-8">
+            <Link href="#contact" className="relative inline-flex group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8CC63F] to-[#5A822A] rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+              <button className="relative px-6 sm:px-8 py-3 bg-[#8CC63F] rounded-full leading-none flex items-center divide-x divide-gray-600 w-full sm:w-auto justify-center text-base">
+                <span className="pr-4 text-black">Get Started</span>
+                <span className="pl-4 text-black group-hover:text-white transition duration-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
+              </button>
+            </Link>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mt-16">
-            <div>
+            <div className="text-center">
               <div className="text-[#8CC63F] mb-4 flex justify-center">
-                <FontAwesomeIcon icon={faBolt} style={{ width: '48px', height: '48px' }} />
+                <FontAwesomeIcon icon={faEnvelope} style={{ width: '48px', height: '48px' }} />
               </div>
               <h3 className="text-2xl font-semibold mb-3">Cold Outbound</h3>
               <p className="text-gray-300 text-sm">
@@ -30,9 +46,9 @@ const We: React.FC = () => {
                 Our strategies are designed to capture attention and drive engagement.
               </p>
             </div>
-            <div>
+            <div className="text-center">
               <div className="text-[#8CC63F] mb-4 flex justify-center">
-                <FontAwesomeIcon icon={faWrench} style={{ width: '48px', height: '48px' }} />
+                <FontAwesomeIcon icon={faCogs} style={{ width: '48px', height: '48px' }} />
               </div>
               <h3 className="text-2xl font-semibold mb-3">Process Development</h3>
               <p className="text-gray-300 text-sm">
@@ -42,9 +58,9 @@ const We: React.FC = () => {
                 Streamline your operations and maximize efficiency with our tailored solutions.
               </p>
             </div>
-            <div>
+            <div className="text-center">
               <div className="text-[#8CC63F] mb-4 flex justify-center">
-                <FontAwesomeIcon icon={faBullseye} style={{ width: '48px', height: '48px' }} />
+                <FontAwesomeIcon icon={faUserCheck} style={{ width: '48px', height: '48px' }} />
               </div>
               <h3 className="text-2xl font-semibold mb-3">Lead Qualification</h3>
               <p className="text-gray-300 text-sm">
@@ -54,9 +70,9 @@ const We: React.FC = () => {
                 Our proven methods ensure you focus on the most promising prospects.
               </p>
             </div>
-            <div>
+            <div className="text-center">
               <div className="text-[#8CC63F] mb-4 flex justify-center">
-                <FontAwesomeIcon icon={faChartLine} style={{ width: '48px', height: '48px' }} />
+                <FontAwesomeIcon icon={faChartPie} style={{ width: '48px', height: '48px' }} />
               </div>
               <h3 className="text-2xl font-semibold mb-3">Strategic Process</h3>
               <p className="text-gray-300 text-sm">
@@ -71,7 +87,7 @@ const We: React.FC = () => {
         <div className="mt-16 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#8CC63F]">Our Approach</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            At GrowLexi, we believe in a strategic approach that's as unique as your business. Our method isn't just about connecting dots; it's about drawing the right ones.
+            Strategize, Execute, and Elevate Your Sales Development Process
           </p>
         </div>
       </div>
