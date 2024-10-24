@@ -6,8 +6,8 @@ import Script from 'next/script';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Growlexi",
-  description: "Growlexi application",
+  title: "GrowLexi",
+  description: "GrowLexi application",
 };
 
 export default function RootLayout({

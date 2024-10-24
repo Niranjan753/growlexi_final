@@ -1,97 +1,82 @@
 'use client'
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Link from 'next/link';
 
-interface PackageCardProps {
-  title: string;
-  features: string[];
-  price?: string;
-}
-  
-const PackageCard: React.FC<PackageCardProps> = ({ title, features, price }) => {
+const PackagesPageWrapper: React.FC = () => {
   return (
-    <div 
-      className={`bg-gradient-to-b from-gray-900 to-black rounded-2xl shadow-2xl p-6 flex flex-col h-full relative`}
-    >
-      {price && (
-        <div className="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold py-1 px-2 rounded">
-          Starting at {price}
-        </div>
-      )}
-      <h3 className={`text-xl font-bold text-[#8CC63F] text-center mb-4`}>{title}</h3>
-      <ul className="space-y-2 flex-grow">
-        {features.map((feature, index) => (
-          <li key={index} className={`flex items-start text-white`}>
-            <FontAwesomeIcon icon={faCheck} className={`mr-2 mt-1 text-[#8CC63F]`} />
-            <span>{feature}</span>
-          </li>
-        ))}
-      </ul>
+    <div className="min-h-screen bg-black text-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <Header />
+        <main className="py-12 sm:py-20 text-center relative overflow-hidden mt-16">
+          <h1 className="text-4xl font-bold mb-12">Our Packages</h1>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-8 shadow-lg relative overflow-hidden group max-w-md mx-auto w-full">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#8CC63F] to-[#5A822A] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              <div className="relative z-10">
+                <h2 className="text-3xl font-semibold mb-4">Lead Activation Services</h2>
+                <p className="text-xl font-bold text-white bg-red-600 mb-6 p-2 rounded-lg shadow-md transition-all duration-300 hover:bg-red-700 inline-block">Starting at $799</p>
+                <ul className="list-disc list-inside mb-6 text-left">
+                  <li>Coordinated email and LinkedIn outreach</li>
+                  <li>Deliverability optimization</li>
+                  <li>Custom-tailored sales copy</li>
+                  <li>Ongoing A/B testing</li>
+                  <li>Monthly strategy and reporting calls</li>
+                  <li>Tech stack setup and maintenance</li>
+                  <li>Dedicated Slack channel</li>
+                </ul>
+              </div>
+              <div className="absolute inset-0 border border-[#8CC63F] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+            </div>
+
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-8 shadow-lg relative overflow-hidden group max-w-md mx-auto w-full">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#8CC63F] to-[#5A822A] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              <div className="relative z-10">
+                <h2 className="text-3xl font-semibold mb-4">Integrated Top of Funnel Management</h2>
+                <p className="text-2xl font-bold text-[#8CC63F] mb-6">Custom Pricing</p>
+                <ul className="list-disc list-inside mb-6 text-left">
+                  <li>Everything in Lead Activation Services</li>
+                  <li>Weekly strategy calls</li>
+                  <li>Up to 8 hours weekly of top of top-of-funnel management</li>
+                  <li>Process automation</li>
+                  <li>Lead attribution strategy</li>
+                  <li>Response templates & sequences</li>
+                  <li>SDR hiring and training support</li>
+                  <li>Tailored sales development playbook</li>
+                </ul>
+              </div>
+              <div className="absolute inset-0 border border-[#8CC63F] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+            </div>
+
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-8 shadow-lg relative overflow-hidden group max-w-md mx-auto w-full">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#8CC63F] to-[#5A822A] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              <div className="relative z-10">
+                <h2 className="text-3xl font-semibold mb-4">Add On Packages</h2>
+                <p className="text-2xl font-bold text-[#8CC63F] mb-6">Flexible Pricing</p>
+                <ul className="list-disc list-inside mb-6 text-left">
+                  <li>Extra Domains Configuration</li>
+                  <li>Additional Outbound Engines</li>
+                  <li>Additional outbound users</li>
+                  <li>Additional targets</li>
+                  <li>Cross channel coordination</li>
+                </ul>
+              </div>
+              <div className="absolute inset-0 border border-[#8CC63F] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link href="/#contact" className="bg-[#8CC63F] text-black px-8 py-4 rounded-full text-xl font-semibold hover:bg-[#5A822A] transition duration-300">
+              Contact Us
+            </Link>
+          </div>
+        </main>
+      </div>
+      <Footer />
     </div>
   );
 };
 
-export default function Packages() {
-  const packages = [
-    {
-      title: "Lead Activation Services",
-      features: [
-        "Target Account List",
-        "Buyer Persona Development",
-        "Email Sequence Development",
-        "LinkedIn Profile Optimization",
-        "A/B Testing",
-        "Weekly Reporting",
-        "Monthly Strategy Sessions"
-      ],
-      price: "$699"
-    },
-    {
-      title: "Integrated Top of Funnel Management",
-      features: [
-        "Everything in Lead Activation Services",
-        "Personalized Sales Outreach",
-        "Appointment Setting",
-        "Sales Development Playbook",
-        "Sales KPI and Tracking"
-      ]
-    }
-  ];
-
-  const addOns = [
-    { title: "Automation Support", features: ["Streamlined workflow processes", "Custom automation solutions", "Integration with existing systems"] },
-    { title: "Custom APIs", features: ["Tailored API development", "Seamless data exchange", "Enhanced system connectivity"] },
-    { title: "Extra Domains Configuration", features: ["Multiple domain setup", "Cross-domain tracking", "Improved brand segmentation"] }
-  ];
-
-  return (
-    <>
-      <Header />
-      <div className="min-h-screen bg-black text-white py-20 px-4 flex items-center justify-center">
-        <div className="max-w-6xl w-full">
-          <h1 className="text-4xl font-bold text-center mb-2">Our Packages</h1>
-          <p className="text-center text-gray-400 mb-8">Choose the perfect plan to supercharge your lead generation and sales process.</p>
-          
-          <div className="flex justify-center mb-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
-              {packages.map((pkg, index) => (
-                <PackageCard key={index} {...pkg} />
-              ))}
-            </div>
-          </div>
-
-          <h2 className="text-2xl font-bold text-center mb-4">Add On Packages</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {addOns.map((addOn, index) => (
-              <PackageCard key={index} {...addOn} />
-            ))}
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </>
-  );
-}
+export default PackagesPageWrapper;

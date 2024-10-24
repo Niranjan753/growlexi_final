@@ -118,13 +118,15 @@ export default function LandingPage() {
                 </button>
               </Link>
             </div>
+            <div className="mt-12">
+              <Clients />
+            </div>
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black to-transparent"></div>
         </main>
       </div>
       <div id="about-us"><We /></div>
       <div id="roadmap"><Roadmap /></div>
-      <div id="clients"><Clients /></div>
       <Recommendations />
       <Slider />
       <div id="contact"><Contact /></div>

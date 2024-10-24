@@ -44,32 +44,32 @@ const TeamMember: React.FC<TeamMemberProps> = ({ imageSrc, name, role, descripti
 const TeamPage: React.FC = () => {
   const teamMembers = [
     {
-      imageSrc: "/ceo.webp",
+      imageSrc: "/1.jpg",
       name: "Stephen Comstock",
       role: "Founder",
       description: "Stephen's professional journey is a tapestry of strategic innovation and leadership across tech and sales. His expertise in leading teams and driving demand stands out. His experience in spearheading technology and sales strategies, reflects a dynamic blend of technological acumen and business growth savvy",
       linkedIn: "https://www.linkedin.com/in/stephencomstock"
     },
     {
-      imageSrc: "/lead.webp",
-      name: "Rishabh Pandey",
-      role: "Operations Lead",
-      description: "Rishabh has diverse experience ranging from customer relations to mastering sales development strategies. His skillset is a blend of analytical acumen and campaign expertise to innovate and drive operational excellence in the fast-paced tech landscape.",
-      linkedIn: "https://www.linkedin.com/in/rishabh-pandey-b87b4519/"
-    },
-    {
-      imageSrc: "/Ashish.jpg",
+      imageSrc: "/3.jpg",
       name: "Ashish Vaishnav",
       role: "Senior Director of Implementation",
       description: "Expert in implementing complex technological solutions.",
       linkedIn: "https://www.linkedin.com/in/ashish-vaishnav/"
     },
     {
+      imageSrc: "/4.jpg",
       name: "Brian Cooper",
       role: "Sales Enablement Manager",
       description: "Drives sales performance with innovative strategies.",
-      linkedIn: "https://www.linkedin.com/in/brian-cooper-3b5973294/",
-      useIcon: true
+      linkedIn: "https://www.linkedin.com/in/brian-cooper-3b5973294/"
+    },
+    {
+      imageSrc: "/2.jpg",
+      name: "Rishabh Pandey",
+      role: "Automation Consultant",
+      description: "Rishabh has diverse experience ranging from customer relations to mastering sales development strategies. His skillset is a blend of analytical acumen and campaign expertise to innovate and drive operational excellence in the fast-paced tech landscape.",
+      linkedIn: "https://www.linkedin.com/in/rishabh-pandey-b87b4519/"
     },
     {
       imageSrc: "/keith.jpg",
@@ -77,7 +77,7 @@ const TeamPage: React.FC = () => {
       role: "Implementation Manager",
       description: "Ensures flawless implementation of solutions for clients.",
       linkedIn: "https://www.linkedin.com/in/keith-stubitsch-a7b37712/"
-    },
+    }
   ];
 
   return (
