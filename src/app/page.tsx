@@ -7,6 +7,7 @@ import Recommendations from "../components/Recommendations";
 import Slider from "../components/Slider";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
 import Clients from "../components/Clients";
@@ -39,44 +40,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="fixed top-0 left-0 right-0 z-50 bg-black transition-all duration-300">
-          <nav className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center w-full bg-opacity-20 rounded-full py-3">
-            <div className="w-32 h-12 relative cursor-pointer" onClick={handleLogoClick}>
-              <Image
-                src="/logo.webp"
-                alt="GrowLexi Logo"
-                layout="fill"
-                objectFit="contain"
-              />
-            </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/" className="text-white hover:text-[#8CC63F] transition duration-300">Home</Link>
-              <Link href="/packages" className="text-white hover:text-[#8CC63F] transition duration-300">Packages</Link>
-              <Link href="/Team" className="text-white hover:text-[#8CC63F] transition duration-300">Team</Link>
-              <Link href="#contact" className="bg-black border border-[#8CC63F] text-white px-6 py-2 text-base rounded-full hover:bg-[#8CC63F] hover:text-black transition duration-300">
-                Let's Talk
-              </Link>
-            </div>
-            <button 
-              className="md:hidden text-white focus:outline-none"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-              </svg>
-            </button>
-          </nav>
-          {isMenuOpen && (
-            <div className="md:hidden mt-4 bg-black">
-              <Link href="/" className="block text-white hover:text-[#8CC63F] py-2">Home</Link>
-              <Link href="/packages" className="block text-white hover:text-[#8CC63F] py-2">Packages</Link>
-              <Link href="/Team" className="block text-white hover:text-[#8CC63F] py-2">Team</Link>
-              <Link href="#contact" className="block bg-black border border-[#8CC63F] text-white px-6 py-2 text-base rounded-full hover:bg-[#8CC63F] hover:text-black mt-2 mx-auto w-max">
-                Let's Talk
-              </Link>
-            </div>
-          )}
-        </header>
+        <Header />
         <main className="py-12 sm:py-20 text-center relative overflow-hidden mt-16">
           <div className="absolute inset-0 bg-black z-0"></div>
           <div className="relative z-10">
